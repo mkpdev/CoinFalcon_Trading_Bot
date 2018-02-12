@@ -1,0 +1,42 @@
+<h1>Trading</h1>
+
+<%= form_with scope: :trading, url: tradings_path, local: true do |f| %>
+  <p>
+    <%= f.label :market %><br>
+    <%= f.select :market, options_for_select(market_list) %>
+  </p>
+  <p>
+    <%= f.label :buy_order %><br>
+    <%= f.number_field :buy_order, step: 1 %>
+  </p>
+  <p>
+    <%= f.label :sell_order %><br>
+    <%= f.number_field :sell_order, step: 1 %>
+  </p>
+  <p>
+    <%= f.label :sell_price_variation %><br>
+    <%= f.number_field :sell_price_variation, step: 0.01 %>
+  </p>
+  <p>
+    <%= f.label :buy_price_variation %><br>
+    <%= f.number_field :buy_price_variation, step: 0.01 %>
+  </p>
+  <p>
+    <%= f.label :market1_amount %><br>
+    <%= f.number_field :market1_amount, step: 0.01 %>
+  </p>
+  <p>
+    <%= f.label :market2_amount %><br>
+    <%= f.number_field :market2_amount, step: 0.01 %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<!-- # Market (IOT-BTC)
+# Amount of orders to create per type (buy/sell)
+# How much higher in % the sell price should be
+# How much lower the but price should be
+# Amount in IOT to use
+# Amount in BTC to use -->
