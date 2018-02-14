@@ -22,19 +22,6 @@ class CoinfalconExchange
   end
 
   def get_signature(timestamp, request_path='', body={}, method='GET')
-    # Example for get
-    # request_path = '/api/v1/user/orders'
-    # timestamp = 1513411769
-    # method = 'GET'
-    # payload = '1513411769|GET|/api/v1/user/orders'
-
-    # Example for post
-    # request_path = '/api/v1/user/orders'
-    # timestamp = 1513411657
-    # method = 'POST'
-    # body {market: 'IOT-BTC', operation_type: 'market_order', order_type: 'buy', size: '1'}
-    # payload = '1513411657|POST|/api/v1/user/orders|{"market":"IOT-BTC","operation_type":"market_order","order_type":"buy","size":"1"}'
-
     if method == 'GET'
       payload = [timestamp, method, request_path].join("|")
     else

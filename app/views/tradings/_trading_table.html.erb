@@ -1,17 +1,26 @@
-<table>
-  <tr>
-    <th>Market</th>
-    <th><%= type %> Order</th>
-    <th>Price Variation</th>
-    <th>Market1 Amount</th>
-  </tr>
-  <% tradings.each do |trade| %>
+<table class="table table-striped">
+  <thead class="thead-light">
     <tr>
-      <td><%= trade.market.name %></td>
-      <td><%= trade.order_count %></td>
-      <td><%= trade.price_variation %></td>
-      <td><%= trade.market1_amount %></td>
-      <td><%= trade.error_message %></td>
+      <th>Market</th>
+      <th><%= type %> Order</th>
+      <th>Price Variation</th>
+      <th>Market1 Amount</th>
+      <th>Error</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% if tradings.blank? %>
+      <tr><td colspan="5">Record not available.</td></tr>
+    <% else %>
+      <% tradings.each do |trade| %>
+        <tr>
+          <td><%= trade.market.name %></td>
+          <td><%= trade.order_count %></td>
+          <td><%= trade.price_variation %></td>
+          <td><%= trade.market1_amount %></td>
+          <td><%= trade.error_message %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
 </table>

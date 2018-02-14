@@ -1,27 +1,27 @@
-<h3>show</h3>
-<p>
-  <strong>Order Type:</strong>
-  <%= @trading.order_type %>
-</p>
-<p>
-  <strong>Market:</strong>
-  <%= @trading.market.name %>
-</p>
-<p>
-  <strong>number of order:</strong>
-  <%= @trading.order_count %>
-</p>
-<p>
-  <strong>Price Variation:</strong>
-  <%= @trading.price_variation %> %
-</p>
-<p>
-  <strong>market1_amount:</strong>
-  <%= @trading.market1_amount %>
-</p>
-<p>
-  <strong>market2_amount:</strong>
-  <%= @trading.market2_amount %>
-</p>
-
-<%= link_to 'Trade List', trade_list_path %>
+<div class="head-action">
+  <span class="head-text">Showing Trade</span>
+  <%= link_to "Trading Bot", trade_list_path, class: 'btn btn-primary float-right btn-margin' %>
+  <%= link_to "Create Trading", new_trading_path, class: 'btn btn-success float-right btn-margin margin-right-15' %>
+</div>
+<div class="center-position form-group">
+  <div class="row">
+    <div class="col-lg-5">Order Type</div>
+    <div class="col-lg-1">:</div>
+    <div class="col-lg-6"><%= @trading.order_type %></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">Market</div>
+    <div class="col-lg-1">:</div>
+    <div class="col-lg-6"><%= @trading.market.name %></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">Price Variation</div>
+    <div class="col-lg-1">:</div>
+    <div class="col-lg-6"><%= @trading.price_variation %>%</div>
+  </div>
+  <div class="row">
+    <div class="col-lg-5">Order Type</div>
+    <div class="col-lg-1">:</div>
+    <div class="col-lg-6"><%= @trading.market1_amount %></div>
+  </div>
+</div>

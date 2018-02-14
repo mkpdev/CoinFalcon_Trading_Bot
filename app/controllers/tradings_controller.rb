@@ -66,6 +66,7 @@ class TradingsController < ApplicationController
     @client_orderbook = @client.orderbook(market)
     @client_trades = @client.trades(market)
     @my_order = @client.my_orders
+    @my_order = @my_order['data'].paginate(per_page: 20)
   end
 
   def orderbook_price(type)

@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :tradings
   get 'trade_list', to: 'tradings#trade_list'
 
-  root 'tradings#new'
+  root 'tradings#trade_list'
 end

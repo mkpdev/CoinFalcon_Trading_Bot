@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <tr class="thead-light">
+    <th>Market</th>
+    <th>Date</th>
+    <th>Order Type</th>
+    <th>Size</th>
+  </tr>
+  <% orders.each do |order| %>
+    <tr>
+      <td><%= order['market'] %></td>
+      <td><%= order['created_at'].to_date.strftime("%d %b %Y %I:%M") %></td>
+      <td><%= order['order_type'] %></td>
+      <td><%= order['size'] %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate orders %>
