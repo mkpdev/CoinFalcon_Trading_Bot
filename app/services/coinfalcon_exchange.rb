@@ -1,3 +1,4 @@
+require 'awesome_print'
 require 'rest-client'
 require 'json'
 require 'pry'
@@ -135,27 +136,4 @@ class CoinfalconExchange
     result = RestClient.delete(url, headers(URI(url).request_uri, {}, 'DELETE'))
     JSON.parse(result.body)
   end
-
 end
-
-#staging
-#client = CoinfalconExchange.new('70b23c92-51df-413d-8d2d-73504d85e2df', '0b63546f-983e-48ac-bed7-10e4d4a0dfed')
-
-#development
-# client = CoinfalconExchange.new('a41db994-1a1a-4256-8279-212f893cb6d1', 'bbcb7bce-d767-4b37-8257-667d0809936b')
-
-# ap client.orderbook('IOT-BTC')
-# ap client.my_orders
-# ap client.accounts
-#result = client.create_order({market: 'BTC-EUR', operation_type: 'market_order', order_type: 'sell', size: '0.01'})
-#ap result
-#ap client.order(result['data']['id'])
-#ap client.cancel_order(result['data']['id'])
-# ap client.deposit_address('btc')
-#result = client.create_withdrawal({amount: '0.001', address: 'mszGuGEdvkRsnFaTymW9LHiMan1qcPH4wn', currency: 'btc'})
-# ap client.withdrawal('9b25877a-35ae-4812-8d89-953ed4c55094')
-# ap client.withdrawals(currency: 'btc', status: 'completed')
-#ap result
-#ap client.cancel_withdrawal(result['data']['id'])
-# ap client.deposits(currency: 'btc', status: 'completed')
-# ap client.deposit('e30a3ac8-33b1-46ed-8f54-1112417de581')
