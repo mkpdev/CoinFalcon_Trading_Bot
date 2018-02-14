@@ -7,5 +7,5 @@ function update()
   }
 
 $(document).ready(function(){
-  window.setInterval('update()', 20*1000);
+  window.setInterval('update()', 40*1000);
 });

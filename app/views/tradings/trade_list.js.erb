@@ -1,0 +1,1 @@
+$("#trading-list").html("<%= escape_javascript(render partial: "partial_1", locals: { client_orderbook:@client_orderbook, client_trades: @client_trades['data'][0], buy_tradings: @buy_tradings, sell_tradings: @sell_tradings, my_order: @my_order, market: @market }) %>");

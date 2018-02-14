@@ -25,15 +25,17 @@ ActiveRecord::Schema.define(version: 20180212054036) do
   end
 
   create_table "tradings", force: :cascade do |t|
-    t.string "market"
-    t.integer "buy_order"
-    t.integer "sell_order"
-    t.decimal "sell_price_variation"
-    t.decimal "buy_price_variation"
+    t.integer "market_id"
+    t.string "order_type"
+    t.integer "order_count"
+    t.decimal "price_variation"
+    t.boolean "order_placed", default: false
     t.decimal "market1_amount"
     t.decimal "market2_amount"
+    t.string "error_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["market_id"], name: "index_tradings_on_market_id"
   end
 
 end

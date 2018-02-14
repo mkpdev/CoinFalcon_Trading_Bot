@@ -1,42 +1,27 @@
-<h1>Trading</h1>
-
-<%= form_with scope: :trading, url: tradings_path, local: true do |f| %>
-  <p>
-    <%= f.label :market %><br>
-    <%= f.select :market, options_for_select(market_list) %>
-  </p>
-  <p>
-    <%= f.label :buy_order %><br>
-    <%= f.number_field :buy_order, step: 1 %>
-  </p>
-  <p>
-    <%= f.label :sell_order %><br>
-    <%= f.number_field :sell_order, step: 1 %>
-  </p>
-  <p>
-    <%= f.label :sell_price_variation %><br>
-    <%= f.number_field :sell_price_variation, step: 0.01 %>
-  </p>
-  <p>
-    <%= f.label :buy_price_variation %><br>
-    <%= f.number_field :buy_price_variation, step: 0.01 %>
-  </p>
-  <p>
-    <%= f.label :market1_amount %><br>
-    <%= f.number_field :market1_amount, step: 0.01 %>
-  </p>
-  <p>
-    <%= f.label :market2_amount %><br>
-    <%= f.number_field :market2_amount, step: 0.01 %>
-  </p>
-  <p>
+<h1>Trading Bot</h1>
+<div class="center-position">
+  <%= form_with scope: :trading, url: tradings_path, local: true do |f| %>
+    <%= render partial: 'trading_errors', locals: { trading: @trading } %>  
+    <div class="form-group">
+      <%= f.radio_button :order_type, 'sell', checked: true %> Sell
+      <%= f.radio_button :order_type, 'buy' %> Buy
+    </div>
+    <div class="form-group">
+      <label>Choose Market :</label>
+      <%= f.select :market_id, options_for_select(market_list) %>
+    </div>
+    <div class="form-group">
+      <label>Number of Order :</label>
+      <%= f.number_field :order_count, step: 1, input_html: { required: true } %>
+    </div>
+    <div class="form-group">
+      <label>Change in Price :</label>
+      <%= f.number_field :price_variation, step: 0.00001, input_html: { required: true } %>
+    </div>
+    <div class="form-group">
+      <label>Order Size :</label>
+      <%= f.number_field :market1_amount, step: 0.00001, input_html: { required: true } %>
+    </div>
     <%= f.submit %>
-  </p>
-<% end %>
-
-<!-- # Market (IOT-BTC)
-# Amount of orders to create per type (buy/sell)
-# How much higher in % the sell price should be
-# How much lower the but price should be
-# Amount in IOT to use
-# Amount in BTC to use -->
+  <% end %>
+</div>

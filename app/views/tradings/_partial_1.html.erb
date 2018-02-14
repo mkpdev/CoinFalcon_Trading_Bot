@@ -1,0 +1,48 @@
+<h3>Order List</h3>
+<p>Please select market : <%= select_tag 'choose_market', options_for_select(market_list,
+  selected: [@market.name, market.id]) %></p>
+<%= render partial: 'shared/spinner' %>
+<hr>
+<strong>Bid Price</strong> : <%= client_orderbook_price(@client_orderbook, 'bids') %>
+<strong>Ask Price</strong> : <%= client_orderbook_price(@client_orderbook, 'asks') %>
+<hr>
+<strong>Trade Price</strong> : <%= client_trades["price"] %><br/>
+<hr>
+
+<strong>Buy Tradings</strong> :
+<%= render partial: 'trading_table', locals: {tradings: buy_tradings, type: 'Buy'} %>
+<strong>Sell Tradings</strong> :
+<%= render partial: 'trading_table', locals: {tradings: sell_tradings, type: 'Sell'} %>
+<hr>
+
+<strong>My Order</strong>
+<table>
+  <tr>
+    <th>Market</th>
+    <th>Date</th>
+    <th>Order Type</th>
+    <th>Size</th>
+  </tr>
+  <% my_order['data'].each do |order| %>
+    <tr>
+      <td><%= order['market'] %></td>
+      <td><%= order['created_at'].to_date.strftime("%d %b %Y %I:%M") %></td>
+      <td><%= order['order_type'] %></td>
+      <td><%= order['size'] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<script type="text/javascript">
+  jQuery(function($) {
+    $("#choose_market").change(function() {
+      var market = $('select#choose_market :selected').val();
+      $.ajax('/trade_list', {
+        type: 'GET',
+        data: { market_id: market },
+        dataType: "script"
+      });
+      return false;
+    });
+  })
+</script>

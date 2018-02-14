@@ -1,10 +1,10 @@
 module ApplicationHelper
 
   def market_list
-    Market.all.map { |market| [market.name, market.id] }
+    Market.all.collect { |market| [market.name, market.id] }
   end
 
-  def market_type_list
-    MarketType.all.map { |market_type| [market_type.name, market_type.id] }
+  def client_orderbook_price(client, type)
+    client.dig('data')[type][0]["price"]
   end
 end

@@ -1,25 +1,19 @@
 <h3>show</h3>
-<strong>Order Book</strong> : <%= @client_orderbook %>
-<strong>Trade</strong> : <%= @client_trades['data'][0] %>
 <p>
-  <strong>market:</strong>
-  <%= @trading.market %>
+  <strong>Order Type:</strong>
+  <%= @trading.order_type %>
 </p>
 <p>
-  <strong>buy_order:</strong>
-  <%= @trading.buy_order %>
+  <strong>Market:</strong>
+  <%= @trading.market.name %>
 </p>
 <p>
-  <strong>sell_order:</strong>
-  <%= @trading.sell_order %>
+  <strong>number of order:</strong>
+  <%= @trading.order_count %>
 </p>
 <p>
-  <strong>sell_price_variation:</strong>
-  <%= @trading.sell_price_variation %> %
-</p>
-<p>
-  <strong>buy_price_variation:</strong>
-  <%= @trading.buy_price_variation %> %
+  <strong>Price Variation:</strong>
+  <%= @trading.price_variation %> %
 </p>
 <p>
   <strong>market1_amount:</strong>
@@ -29,3 +23,5 @@
   <strong>market2_amount:</strong>
   <%= @trading.market2_amount %>
 </p>
+
+<%= link_to 'Trade List', trade_list_path %>

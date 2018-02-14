@@ -1,0 +1,13 @@
+<% if @trading.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@trading.errors.count, "error") %> prohibited
+      this trading from being saved:
+    </h2>
+    <ul>
+      <% @trading.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
