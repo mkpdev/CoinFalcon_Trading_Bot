@@ -2,6 +2,9 @@ require_relative 'boot'
 
 require 'rails/all'
 require 'will_paginate/array'
+require 'awesome_print'
+require 'rest-client'
+require 'json'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

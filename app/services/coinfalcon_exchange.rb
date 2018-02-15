@@ -1,8 +1,3 @@
-require 'awesome_print'
-require 'rest-client'
-require 'json'
-require 'pry'
-
 class CoinfalconExchange
   def initialize
     @key = ENV["coinfalcon_exchange_key"]

@@ -24,14 +24,13 @@ class TradingsController < ApplicationController
 
   def trade_list
     # Coinfalcon Exchange Market
-    market_id = params[:market_id].nil? ? Market.first.id : params[:market_id]
-    @market = Market.find(market_id)
+    @market = Market.find(params[:market_id] || Market.first.id)
     coinfalcon_exchange(@market.name)
 
     # My listed Tradings
-    my_tradings = Trading.where(market: @market)
-    @buy_tradings = my_tradings.not_placed_buy_order
-    @sell_tradings = my_tradings.not_placed_sell_order
+    tradings = Trading.where(market: @market)
+    @buy_tradings = tradings.not_placed_buy_order
+    @sell_tradings = tradings.not_placed_sell_order
     trading_bot(@client_orderbook, @client_trades) if Trading.where(order_placed: false).present?
   end
 

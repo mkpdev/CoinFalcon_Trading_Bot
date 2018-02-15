@@ -8,7 +8,7 @@
   <% orders.each do |order| %>
     <tr>
       <td><%= order['market'] %></td>
-      <td><%= order['created_at'].to_date.strftime("%d %b %Y %I:%M") %></td>
+      <td><%= order['created_at'].to_datetime.strftime("%d %b %Y, %H:%M") %></td>
       <td><%= order['order_type'] %></td>
       <td><%= order['size'] %></td>
     </tr>
